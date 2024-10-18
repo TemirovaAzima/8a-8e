@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+  const product1 = {
+    name: 'cookies',
+    price:400
+  }
+  const product2 = {
+    name: 'Icecream',
+    price: 500
+  }
+  function products1(){
+    console.log(product1 >product2)
+  }
+  products1()
+  // function products(names,prices){
+  //   console.log(names)
+  //   console.log(prices)
+  //   let a = product1.price,
+  //       b = product2.price
+  //   console.log()
+  // }
+  // products(product1, product2)
+  function products(){
+    let question = prompt("what kind of price u would like to pay .Options: lower price or normal price")
+    const product1 = {
+      name: 'cookies',
+      price:400
+    }
+    const product2 = {
+      name: 'Ice cream',
+      price: 500
+    }
+    if(question === 'Lower price' || question === 'lower price'){
+      console.log(`You will get ${product2.name}`)
+    }else{
+      console.log(`You will get ${product1.name}`)
+    }
+  }
+  products()
+</script>
+</body>
+</html>

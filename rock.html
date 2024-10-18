@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tosh Qaychi Qog'oz</title>
+</head>
+<body>
+<p>Tosh Qaychi Qog'oz</p>
+
+<button
+        onclick="
+        playGame('Tosh')
+"
+
+>Tosh</button>
+<button
+        onclick="
+        playGame('Qaychi')
+"
+>Qaychi</button>
+<button
+      onclick="
+      playGame('Qog\'oz')
+    "
+>Qog'oz</button>
+<button
+        onclick="
+        hisob.wins= 0
+        hisob.loses= 0
+        hisob.ties = 0
+        alert('O\'yin qayta boshlandi hisoblar 0ga tenglashtirildi')
+"
+>
+    Qayta boshlash
+</button>
+<script>
+    const hisob = {
+        wins: 0,
+        loses: 0,
+        ties: 0
+    };
+    function playGame(userChoice){
+        let computer1 = computerMove()
+        let result = ''
+        if(userChoice === 'Tosh'){
+
+            if(computer1=== 'Tosh'){
+                result= 'Teng'
+            }else if(computer1 === 'Qaychi'){
+                result = 'G\'alaba qozondingiz'
+            }else if(computer1 === 'Qog\'oz'){
+                result = 'Yutqazdingiz'
+            }
+            // alert(`Siz ${userChoice} tanladingiz.Komputer esa ${computer1}. Natija esa siz ${result}`)
+        }else if(userChoice === 'Qaychi'){
+
+            if(computer1 === 'Tosh'){
+                result= 'Yutqazdingiz'
+            }else if(computer1 === 'Qaychi'){
+                result = 'Teng'
+            }else if(computer1 === 'Qog\'oz'){
+                result = 'G\'alaba qozondingiz'
+            }
+            // alert(`Siz ${userChoice} tanladingiz.Komputer esa ${computer1}. Natija esa siz ${result}`)
+        }else if(userChoice=== 'Qog\'oz') {
+            if (computer1 === 'Tosh') {
+                result = 'G\'alaba qozondingiz'
+            } else if (computer1 === 'Qaychi') {
+                result = 'Yutqazdingiz'
+            } else if (computer1 === 'Qog\'oz') {
+                result = 'Teng'
+            }
+            // alert(`Siz ${userChoice} tanladingiz.Komputer esa ${computer1}. Natija esa siz ${result}`)
+        }
+        if(result === 'Teng'){
+            hisob.ties++
+        }else if(result=== 'Yutqazdingiz'){
+            hisob.loses++
+        }else if(result === 'G\'alaba qozoningiz'){
+            hisob.wins++
+        }
+        alert(
+            `Siz ${userChoice} tanladingiz. Komputer esa ${computer1} tanladi. Natijada esa ${result},
+            G\'alaba soni: ${hisob.wins}
+            Mag'lubiyat soni: ${hisob.loses}
+            Teng: ${hisob.ties}
+
+
+    `)
+
+    }
+    // hisob update qiladi
+
+
+    function computerMove(){
+        let computer= ''
+        const  randomNumber =  Math.random()
+
+        if(randomNumber>=0 && randomNumber<1/3){
+            computer = 'Tosh'
+        }else if(randomNumber>=1/3 && randomNumber<2/3){
+            computer = 'Qaychi'
+        }else if(randomNumber>=2/3 && randomNumber<1){
+            computer = 'Qog\'oz'
+        }
+        return computer
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button
+onclick="
+    playGame('chikka')
+">
+  chikka
+</button>
+<button
+        onclick="
+       playGame('pukka')
+"
+>
+  pukka
+</button>
+<script>
+  let hisob=JSON.parse(localStorage.getItem('hisob'))
+
+  if (hisob === null){
+    hisob = {
+      tie: 0,
+      loses: 0,
+      wins: 0
+    }
+  }
+  function playGame(taxmin){
+    let computer = computerChoice()
+
+    let result = ''
+    if(taxmin === 'chikka'){
+      if(computer === 'chikka'){
+        result = 'G\'alaba qozondingiz!'
+      }else if(computer === 'pukka'){
+        result = 'Yo\'qotdingiz!'
+      }
+      // console.log(`Siz ${taxmin} ni tanladingiz. Komputer esa ${computer}. Natijada ${result}`)
+    }else if(taxmin === 'pukka'){
+      if(computer === 'chikka'){
+        result = 'Yo\'qotdingiz!'
+      }else if(computer === 'pukka'){
+        result = 'G\'alaba qozondingiz!'
+      }
+      // console.log(`Siz ${taxmin} ni tanladingiz. Komputer esa ${computer}. Natijada ${result}`)
+    }
+
+    if (result === 'Yo\'qotdingiz!'){
+      hisob.loses++
+    }
+    else if (result === 'G\'alaba qozondingiz!'){
+      hisob.wins++
+    }
+    localStorage.setItem('hisob',JSON.stringify(hisob))
+    alert(
+            `Siz  ${taxmin} tanladingiz. Komputer esa ${computer} tanladi.Natijada esa ${result},
+             G'alaba soni: ${hisob.wins}
+             Mag'lubiyat soni: ${hisob.loses}
+
+               `
+    )
+  }
+function computerChoice(){
+  let randomNumber = Math.random()
+ let computer = ''
+  if(randomNumber>=0 && randomNumber< 1/5){
+    computer = 'chikka'
+  }else{
+    computer = 'pukka'
+  }
+  return computer
+
+}
+
+     </script>
+</body>
+</html>
